@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="icon" type="image/png" href="Luochang-Metro-Light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="Luochang-Metro-Dark.png" media="(prefers-color-scheme: dark)">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>洛昌地铁 Luochang Metro | 畅行洛昌，连接全城</title>
+  <meta name="description" content="洛昌地铁官方网站。洛昌轨道交通运营主体，覆盖洛昌市区及近郊。查询线路、车站、票价及运营时间，使用洛昌通乘车码便捷出行。">
+  <style>
+    :root{
+      --teal-900:#06312E;
+      --teal-800:#0A4A45;
+      --teal-700:#0F665E;
+      --teal-600:#158C80;
+      --teal-500:#1FB3A3;
+      --teal-400:#4CD4C4;
+      --teal-100:#E3F7F4;
+      --teal-50:#F1FBFA;
+
+      --mint:#7FE3D6;
+      --amber:#F2A93B;
+      --amber-light:#FFD08A;
+
+      --ink:#0F2A2E;
+      --muted:#6B8289;
+      --line:#DCE9E8;
+      --line-soft:#EAF3F2;
+      --bg:#F5FAFA;
+      --bg-soft:#FAFEFD;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+      color:var(--ink);
+      background:#fff;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;}
+    button{font-family:inherit;cursor:pointer;}
+
+    .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+    /* ============ 图片占位块 ============ */
+    .ph{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(135deg,#127F73 0%,#0A4A45 55%,#06312E 100%);
+    }
+    .ph::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 82% 15%, rgba(127,227,214,.35), transparent 55%),
+        radial-gradient(circle at 15% 90%, rgba(242,169,59,.18), transparent 60%),
+        linear-gradient(to top, rgba(0,0,0,.22), transparent 60%);
+    }
+    .ph::after{
+      content:attr(data-name);
+      position:absolute;
+      left:12px;bottom:10px;
+      z-index:3;
+      font-size:11px;
+      letter-spacing:.4px;
+      color:rgba(255,255,255,.78);
+      background:rgba(0,0,0,.25);
+      padding:3px 8px;
+      border-radius:3px;
+      backdrop-filter:blur(2px);
+    }
+    .ph-light{
+      background:linear-gradient(135deg,#E9F7F5 0%,#D5EFEC 100%);
+    }
+    .ph-light::after{color:#5F8A86;background:rgba(255,255,255,.75);}
+    .ph-light::before{background:radial-gradient(circle at 80% 20%, rgba(255,255,255,.7), transparent 60%);}
+
+    /* ============ 顶部导航 ============ */
+    .topnav{
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);
+      color:var(--teal-800);
+      position:sticky;top:0;z-index:200;
+      border-bottom:1px solid var(--line);
+    }
+    .topnav-inner{
+      display:flex;align-items:center;
+      height:74px;gap:34px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+    .brand img{height:38px;width:auto;}
+    .brand-text{display:flex;flex-direction:column;line-height:1.2;}
+    .brand-text strong{font-size:15.5px;letter-spacing:2px;font-weight:700;color:var(--teal-900);}
+    .brand-text small{font-size:9px;letter-spacing:2.4px;color:var(--muted);}
+
+    .topmenu{
+      display:flex;align-items:center;gap:28px;
+      font-size:15px;font-weight:500;
+      margin-left:8px;
+    }
+    .topmenu a{
+      color:var(--teal-800);
+      position:relative;padding:6px 0;
+      transition:color .2s;
+    }
+    .topmenu a::after{
+      content:"";position:absolute;left:0;right:100%;bottom:0;
+      height:2px;background:var(--teal-500);
+      border-radius:2px;
+      transition:right .28s ease;
+    }
+    .topmenu a:hover{color:var(--teal-600);}
+    .topmenu a:hover::after{right:0;}
+
+    .topnav-right{
+      margin-left:auto;
+      display:flex;align-items:center;gap:18px;
+      font-size:13.5px;
+    }
+    .hello{
+      display:flex;align-items:center;gap:6px;
+      color:var(--muted);
+    }
+    .hello svg{width:16px;height:16px;stroke:var(--teal-600);}
+    .btn-outline{
+      border:1px solid var(--line);
+      color:var(--teal-800);
+      background:#fff;
+      border-radius:100px;
+      padding:8px 18px;
+      font-size:13px;
+      font-weight:500;
+      transition:.2s;
+    }
+    .btn-outline:hover{
+      background:var(--teal-50);
+      border-color:var(--teal-400);
+      color:var(--teal-700);
+    }
+    .btn-solid{
+      background:linear-gradient(135deg,var(--teal-500),var(--teal-700));
+      color:#fff;
+      font-weight:600;
+      border-radius:100px;
+      padding:9px 20px;
+      font-size:13px;
+      border:0;
+      box-shadow:0 6px 16px rgba(21,140,128,.28);
+      transition:.2s;
+    }
+    .btn-solid:hover{
+      box-shadow:0 10px 22px rgba(21,140,128,.38);
+      transform:translateY(-1px);
+    }
+
+    /* ============ Hero ============ */
+    .hero{
+      background:linear-gradient(180deg,var(--teal-50) 0%,#fff 100%);
+      padding:34px 0 0;
+    }
+    .hero-card{
+      display:grid;
+      grid-template-columns:1fr 1.1fr;
+      background:#fff;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 24px 60px -18px rgba(6,49,46,.28);
+      border:1px solid var(--line-soft);
+      min-height:320px;
+    }
+    .hero-text{
+      padding:52px 54px;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;letter-spacing:2px;font-weight:600;
+      color:var(--teal-600);
+      background:var(--teal-100);
+      border-radius:100px;
+      padding:6px 14px;
+      align-self:flex-start;
+      margin-bottom:20px;
+    }
+    .eyebrow i{
+      width:6px;height:6px;border-radius:50%;
+      background:var(--teal-500);
+      display:block;
+    }
+    .hero-text h1{
+      font-size:33px;font-weight:700;color:var(--teal-900);
+      line-height:1.32;letter-spacing:.5px;
+    }
+    .hero-text h1 em{
+      font-style:normal;
+      background:linear-gradient(120deg,var(--teal-500),var(--amber));
+      -webkit-background-clip:text;background-clip:text;
+      color:transparent;
+    }
+    .hero-text .sub{
+      margin-top:16px;font-size:15px;color:var(--muted);
+      line-height:1.85;max-width:440px;
+    }
+    .hero-actions{
+      margin-top:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+    }
+    .btn-gold{
+      background:linear-gradient(135deg,var(--teal-500),var(--teal-700));
+      color:#fff;
+      border:0;border-radius:100px;
+      padding:14px 34px;
+      font-size:15px;font-weight:600;letter-spacing:.5px;
+      box-shadow:0 12px 26px -6px rgba(21,140,128,.5);
+      transition:.22s;
+    }
+    .btn-gold:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 34px -6px rgba(21,140,128,.55);
+    }
+    .link-plain{
+      font-size:14px;font-weight:600;color:var(--teal-700);
+      border-bottom:1.5px solid var(--teal-400);
+      padding-bottom:2px;transition:.2s;
+    }
+    .link-plain:hover{color:var(--amber);border-color:var(--amber);}
+    .hero-note{
+      margin-top:18px;font-size:12.5px;color:#93A8AD;
+    }
+    .hero-media{min-height:320px;}
+
+    /* ============ 搜索面板 ============ */
+    .searchbar{
+      background:#fff;
+      border-radius:20px;
+      box-shadow:0 24px 60px -20px rgba(6,49,46,.28);
+      border:1px solid var(--line-soft);
+      margin:24px 0 0;
+      position:relative;
+      z-index:5;
+      overflow:hidden;
+    }
+    .search-tabs{
+      display:flex;gap:2px;
+      padding:0 20px;
+      border-bottom:1px solid var(--line);
+      background:var(--bg-soft);
+      overflow-x:auto;
+    }
+    .search-tabs button,
+    .search-tabs a.tab-link{
+      background:none;border:0;
+      font-size:15px;color:var(--muted);font-weight:500;
+      padding:18px 20px;
+      border-bottom:3px solid transparent;
+      transition:.2s;white-space:nowrap;
+      display:inline-block;
+      text-decoration:none;
+      cursor:pointer;
+      font-family:inherit;
+    }
+    .search-tabs button:hover,
+    .search-tabs a.tab-link:hover{color:var(--teal-700);}
+    .search-tabs button.active{
+      color:var(--teal-800);font-weight:600;
+      border-bottom-color:var(--teal-500);
+    }
+
+    .search-fields{
+      display:flex;flex-wrap:wrap;align-items:stretch;
+    }
+    .sf{
+      flex:1 1 200px;
+      padding:16px 22px;
+      border-right:1px solid var(--line);
+      position:relative;
+      transition:background .2s;
+    }
+    .sf:hover{background:var(--teal-50);}
+    .sf label{
+      display:block;font-size:11px;letter-spacing:1.2px;
+      color:var(--muted);margin-bottom:5px;text-transform:uppercase;
+    }
+    .sf select,.sf input{
+      width:100%;border:0;outline:none;background:transparent;
+      font-size:16.5px;font-weight:600;color:var(--teal-900);
+      font-family:inherit;
+    }
+    .sf select{
+      cursor:pointer;appearance:none;-webkit-appearance:none;
+    }
+    .sf input{cursor:text;}
+    .sf input::placeholder{color:#A8BDBE;font-weight:400;font-size:15px;}
+    .sf .hint{font-size:12px;color:var(--muted);font-weight:400;margin-top:2px;}
+    .sf-submit{
+      flex:0 0 auto;
+      display:flex;align-items:center;
+      padding:16px 22px;
+    }
+    .search-foot{
+      padding:12px 24px 16px;
+      font-size:12.5px;color:var(--muted);
+      border-top:1px solid var(--line);
+      background:var(--bg-soft);
+      display:flex;gap:9px;align-items:center;flex-wrap:wrap;
+    }
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-500);flex-shrink:0;}
+
+    /* ============ 车站输入匹配下拉 ============ */
+    .sf.combo{z-index:1;}
+    .sf.combo.is-open{
+      z-index:70;
+      background:var(--teal-50);
+    }
+    .combo-list{
+      position:absolute;
+      top:100%;left:0;
+      min-width:100%;
+      width:max-content;
+      max-width:380px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-top:0;
+      border-radius:0 0 16px 16px;
+      box-shadow:0 24px 50px -12px rgba(6,49,46,.3);
+      max-height:296px;
+      overflow-y:auto;
+      display:none;
+      z-index:80;
+    }
+    .sf.combo.is-open .combo-list{display:block;}
+
+    .combo-item{
+      display:flex;align-items:center;gap:12px;
+      padding:11px 16px;
+      cursor:pointer;
+      border-bottom:1px solid var(--line-soft);
+      transition:background .15s;
+    }
+    .combo-item:last-child{border-bottom:0;}
+    .combo-item.active,
+    .combo-item:hover{background:var(--teal-50);}
+
+    .ci-code{
+      flex:0 0 auto;
+      min-width:52px;
+      text-align:center;
+      font-size:11px;font-weight:700;letter-spacing:.9px;
+      color:var(--teal-700);
+      background:var(--teal-100);
+      border-radius:6px;
+      padding:4px 8px;
+      transition:.15s;
+    }
+    .combo-item.active .ci-code{
+      background:var(--teal-700);color:#fff;
+    }
+    .ci-body{
+      display:flex;flex-direction:column;min-width:0;flex:1;
+    }
+    .ci-name{
+      font-size:14.5px;font-weight:600;color:var(--teal-900);
+      white-space:nowrap;
+    }
+    .ci-name em{
+      font-style:normal;font-weight:400;font-size:13px;
+      color:var(--muted);margin-left:6px;
+    }
+    .ci-note{
+      font-size:12px;color:var(--muted);margin-top:2px;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+    .ci-note b{
+      color:var(--teal-700);font-weight:600;
+    }
+    .ci-code mark,.ci-name mark{
+      background:rgba(127,227,214,.45);
+      color:inherit;
+      padding:0 1px;
+      border-radius:2px;
+    }
+    .combo-empty{
+      padding:18px 16px;
+      font-size:13px;color:var(--muted);
+      text-align:center;
+    }
+
+    /* ============ 通用板块 ============ */
+    .section{padding:76px 0;}
+    .section.soft{background:var(--bg);}
+    .section-head{
+      display:flex;align-items:flex-end;justify-content:space-between;
+      gap:24px;margin-bottom:38px;flex-wrap:wrap;
+    }
+    .section-head h2{
+      font-size:30px;font-weight:700;color:var(--teal-900);
+      letter-spacing:.5px;line-height:1.3;
+      position:relative;padding-left:18px;
+    }
+    .section-head h2::before{
+      content:"";position:absolute;left:0;top:6px;bottom:6px;
+      width:5px;border-radius:3px;
+      background:linear-gradient(180deg,var(--teal-500),var(--amber));
+    }
+    .section-head p{color:var(--muted);font-size:14.5px;margin-top:8px;max-width:620px;padding-left:18px;}
+    .link-more{
+      font-size:14px;font-weight:600;color:var(--teal-700);
+      border-bottom:1.5px solid var(--teal-400);
+      padding-bottom:2px;transition:.2s;white-space:nowrap;
+    }
+    .link-more:hover{color:var(--amber);border-color:var(--amber);}
+
+    /* ============ 线路卡片 ============ */
+    .deal-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+    }
+    .deal-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;flex-direction:column;
+      transition:transform .3s ease, box-shadow .3s ease, border-color .3s;
+    }
+    .deal-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 26px 50px -18px rgba(6,49,46,.35);
+      border-color:var(--teal-400);
+    }
+    .deal-media{height:160px;}
+    .deal-body{
+      padding:18px 20px 22px;
+      display:flex;flex-direction:column;flex:1;
+    }
+    .deal-body h3{
+      font-size:18px;font-weight:700;color:var(--teal-900);letter-spacing:.3px;
+    }
+    .deal-body .cabin-tag{
+      display:inline-block;margin-top:8px;
+      font-size:11.5px;letter-spacing:.6px;
+      color:var(--teal-700);background:var(--teal-100);
+      border-radius:100px;padding:4px 11px;align-self:flex-start;
+    }
+    .deal-fare{
+      margin-top:auto;padding-top:15px;
+      border-top:1px dashed var(--line);
+      display:flex;align-items:baseline;gap:6px;
+    }
+    .deal-fare .cur{font-size:12px;font-weight:700;color:var(--teal-600);letter-spacing:1px;}
+    .deal-fare .amount{
+      font-size:26px;font-weight:800;color:var(--teal-900);line-height:1;
+    }
+    .deal-fare .from{font-size:12px;color:var(--muted);}
+    .deal-link{
+      display:block;margin-top:16px;text-align:center;
+      font-size:14px;font-weight:600;letter-spacing:.6px;
+      color:var(--teal-800);
+      background:var(--teal-50);
+      border:1px solid var(--teal-100);
+      border-radius:100px;padding:11px 0;
+      transition:.22s;
+    }
+    .deal-link:hover{
+      background:linear-gradient(135deg,var(--teal-500),var(--teal-700));
+      color:#fff;border-color:transparent;
+      box-shadow:0 10px 22px -8px rgba(21,140,128,.6);
+    }
+
+    /* ============ 服务 2x2 ============ */
+    .cabin-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:22px;
+    }
+    .cabin-card{
+      position:relative;border-radius:18px;overflow:hidden;
+      min-height:290px;
+      display:flex;align-items:flex-end;
+      box-shadow:0 18px 40px -20px rgba(6,49,46,.4);
+    }
+    .cabin-card .ph{position:absolute;inset:0;height:100%;}
+    .cabin-panel{
+      position:relative;z-index:4;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(6px);
+      margin:0 24px 24px;
+      border-radius:14px;
+      padding:22px 24px;
+      box-shadow:0 12px 30px -12px rgba(6,49,46,.35);
+      max-width:430px;
+      border-left:4px solid var(--teal-500);
+    }
+    .cabin-panel h3{
+      font-size:19px;font-weight:700;color:var(--teal-900);
+      letter-spacing:.3px;line-height:1.4;
+    }
+    .cabin-panel p{
+      margin-top:9px;font-size:13.5px;color:var(--muted);line-height:1.75;
+    }
+    .cabin-panel .link-plain{
+      display:inline-block;margin-top:14px;font-size:13.5px;
+    }
+
+    /* ============ 大图卡片 ============ */
+    .holiday-card{
+      border-radius:22px;overflow:hidden;
+      position:relative;min-height:430px;
+      display:flex;align-items:flex-end;
+      box-shadow:0 26px 60px -24px rgba(6,49,46,.45);
+    }
+    .holiday-card .ph{position:absolute;inset:0;height:100%;}
+    .holiday-panel{
+      position:relative;z-index:4;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(6px);
+      margin:0 auto 36px;
+      border-radius:16px;
+      padding:28px 32px;
+      box-shadow:0 16px 40px -14px rgba(6,49,46,.4);
+      max-width:480px;
+      text-align:center;
+      border-top:4px solid var(--amber);
+    }
+    .holiday-panel h3{
+      font-size:22px;font-weight:700;color:var(--teal-900);
+      letter-spacing:.3px;
+    }
+    .holiday-panel p{
+      margin-top:9px;font-size:13.5px;color:var(--muted);line-height:1.75;
+    }
+    .holiday-panel .link-plain{display:inline-block;margin-top:14px;font-size:13.5px;}
+
+    /* ============ 文创商店 ============ */
+    .shop-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+    }
+    .shop-card{
+      border:1px solid var(--line);border-radius:16px;overflow:hidden;
+      background:#fff;
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+    .shop-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 26px 50px -20px rgba(6,49,46,.32);
+    }
+    .shop-media{height:190px;}
+    .shop-body{padding:16px 18px 20px;}
+    .shop-body h4{
+      font-size:15.5px;font-weight:600;color:var(--teal-900);
+      line-height:1.45;
+    }
+    .shop-body .price{
+      margin-top:8px;font-size:13px;color:var(--muted);
+    }
+    .shop-body .price b{color:var(--amber);font-size:15px;}
+
+    .center-cta{text-align:center;margin-top:42px;}
+    .btn-ghost-line{
+      display:inline-block;
+      border:1.5px solid var(--teal-500);
+      color:var(--teal-700);
+      background:var(--teal-50);
+      font-size:14.5px;font-weight:600;letter-spacing:.8px;
+      padding:14px 42px;border-radius:100px;
+      transition:.22s;
+    }
+    .btn-ghost-line:hover{
+      background:linear-gradient(135deg,var(--teal-500),var(--teal-700));
+      color:#fff;border-color:transparent;
+      box-shadow:0 14px 30px -10px rgba(21,140,128,.55);
+    }
+
+    /* ============ 便民 ============ */
+    .dining-grid{
+      display:grid;grid-template-columns:1.35fr 1fr;gap:0;
+      border-radius:22px;overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 24px 60px -28px rgba(6,49,46,.32);
+    }
+    .dining-media{min-height:380px;}
+    .dining-text{
+      padding:48px 48px;
+      display:flex;flex-direction:column;justify-content:center;
+      background:linear-gradient(160deg,#fff 0%,var(--teal-50) 100%);
+    }
+    .dining-text h3{
+      font-size:25px;font-weight:700;color:var(--teal-900);
+      letter-spacing:.3px;line-height:1.4;
+    }
+    .dining-text p{
+      margin-top:14px;font-size:14.5px;color:var(--muted);line-height:1.85;
+    }
+    .dining-text .link-plain{display:inline-block;margin-top:20px;align-self:flex-start;}
+
+    /* ============ 支付 ============ */
+    .pay-card{
+      display:grid;grid-template-columns:1fr 1.1fr;
+      border-radius:22px;overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 24px 60px -28px rgba(6,49,46,.32);
+    }
+    .pay-text{
+      padding:48px 48px;
+      display:flex;flex-direction:column;justify-content:center;
+      background:linear-gradient(160deg,#fff 0%,var(--teal-50) 100%);
+    }
+    .pay-text h3{
+      font-size:25px;font-weight:700;color:var(--teal-900);
+      letter-spacing:.3px;line-height:1.4;
+    }
+    .pay-text p{
+      margin-top:14px;font-size:14.5px;color:var(--muted);line-height:1.85;
+    }
+    .pay-text .link-plain{display:inline-block;margin-top:20px;align-self:flex-start;}
+    .pay-media{min-height:340px;}
+
+    /* ============ 会员 ============ */
+    .member-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:22px;
+    }
+    .member-card{
+      border-radius:18px;overflow:hidden;position:relative;
+      min-height:310px;display:flex;align-items:flex-end;
+      border:1px solid var(--line);
+      box-shadow:0 18px 40px -22px rgba(6,49,46,.35);
+    }
+    .member-card .ph{position:absolute;inset:0;height:100%;}
+    .member-panel{
+      position:relative;z-index:4;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(6px);
+      margin:0 24px 24px;
+      border-radius:14px;
+      padding:22px 24px;
+      box-shadow:0 12px 30px -14px rgba(6,49,46,.35);
+      max-width:410px;
+      border-left:4px solid var(--teal-500);
+    }
+    .member-panel h3{
+      font-size:18px;font-weight:700;color:var(--teal-900);
+      letter-spacing:.3px;line-height:1.4;
+    }
+    .member-panel p{
+      margin-top:9px;font-size:13.5px;color:var(--muted);line-height:1.75;
+    }
+    .member-panel .link-plain{display:inline-block;margin-top:14px;font-size:13.5px;}
+
+    /* ============ 灵感 ============ */
+    .inspire-card{
+      border-radius:22px;overflow:hidden;position:relative;
+      min-height:410px;display:flex;align-items:flex-end;
+      box-shadow:0 26px 60px -24px rgba(6,49,46,.45);
+    }
+    .inspire-card .ph{position:absolute;inset:0;height:100%;}
+    .inspire-panel{
+      position:relative;z-index:4;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(6px);
+      margin:0 0 36px 36px;
+      border-radius:16px;
+      padding:28px 32px;
+      box-shadow:0 16px 40px -14px rgba(6,49,46,.4);
+      max-width:460px;
+      border-left:4px solid var(--amber);
+    }
+    .inspire-panel h3{
+      font-size:22px;font-weight:700;color:var(--teal-900);
+      letter-spacing:.3px;
+    }
+    .inspire-panel p{
+      margin-top:9px;font-size:13.5px;color:var(--muted);line-height:1.75;
+    }
+    .inspire-panel .link-plain{display:inline-block;margin-top:14px;font-size:13.5px;}
+
+    /* ============ 页脚 ============ */
+    footer{
+      background:linear-gradient(180deg,var(--teal-900) 0%,#04211F 100%);
+      color:#9FC0BC;
+      padding:66px 0 28px;
+      font-size:14px;
+    }
+    .foot-grid{
+      display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;
+      gap:38px;
+    }
+    footer h4{
+      color:#fff;font-size:13.5px;font-weight:600;
+      letter-spacing:1.4px;margin-bottom:18px;
+      position:relative;padding-bottom:12px;
+    }
+    footer h4::after{
+      content:"";position:absolute;left:0;bottom:0;
+      width:26px;height:3px;border-radius:2px;
+      background:linear-gradient(90deg,var(--teal-400),var(--amber));
+    }
+    footer a{
+      display:block;padding:5px 0;color:#9FC0BC;
+      font-size:13.5px;transition:.2s;
+    }
+    footer a:hover{color:var(--teal-400);transform:translateX(3px);}
+
+    .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+    .foot-brand img{height:38px;}
+    .foot-brand-text strong{display:block;color:#fff;font-size:15.5px;letter-spacing:2px;}
+    .foot-brand-text small{display:block;font-size:9px;letter-spacing:2.3px;color:#6E928E;}
+
+    .address{
+      font-size:13.5px;line-height:1.9;color:#8FB2AE;
+      padding-left:14px;border-left:3px solid var(--teal-400);
+      margin-bottom:20px;
+    }
+    .address strong{color:#DDF0ED;font-weight:500;}
+
+    .socials{display:flex;gap:12px;}
+    .socials a{
+      width:36px;height:36px;border-radius:50%;
+      border:1px solid rgba(127,227,214,.28);
+      display:flex;align-items:center;justify-content:center;
+      transition:.2s;padding:0;
+    }
+    .socials a:hover{background:var(--teal-400);border-color:var(--teal-400);}
+    .socials svg{width:16px;height:16px;fill:#9FC0BC;transition:.2s;}
+    .socials a:hover svg{fill:var(--teal-900);}
+
+    .foot-bottom{
+      margin-top:48px;padding-top:24px;
+      border-top:1px solid rgba(127,227,214,.15);
+      display:flex;justify-content:space-between;align-items:center;
+      gap:16px;flex-wrap:wrap;
+      font-size:12.5px;color:#6E928E;
+    }
+    .foot-bottom .legal{display:flex;gap:20px;flex-wrap:wrap;}
+    .foot-bottom .legal a{display:inline;padding:0;}
+    .star-mark{display:flex;align-items:center;gap:10px;font-size:12px;color:#8FB2AE;}
+    .star-mark img{height:24px;opacity:.85;}
+
+    /* ============ 响应式 ============ */
+    @media (max-width:1080px){
+      .topmenu{display:none;}
+      .deal-grid,.shop-grid{grid-template-columns:repeat(2,1fr);}
+      .hero-card{grid-template-columns:1fr;}
+      .hero-media{min-height:260px;}
+      .foot-grid{grid-template-columns:1fr 1fr;}
+      .cabin-grid,.member-grid{grid-template-columns:1fr;}
+      .dining-grid,.pay-card{grid-template-columns:1fr;}
+    }
+    @media (max-width:820px){
+      .sf{border-right:0;border-bottom:1px solid var(--line);flex:1 1 100%;}
+      .sf-submit{flex:1 1 100%;padding:18px 22px;}
+      .sf-submit .btn-gold{width:100%;}
+      .topnav-right .hello{display:none;}
+      .combo-list{width:100%;max-width:100%;}
+    }
+    @media (max-width:640px){
+      .container{padding:0 18px;}
+      .topnav-inner{height:64px;gap:16px;}
+      .brand img{height:32px;}
+      .brand-text strong{font-size:14px;}
+      .hero-text{padding:34px 24px;}
+      .hero-text h1{font-size:24px;}
+      .section{padding:54px 0;}
+      .section-head h2{font-size:23px;}
+      .deal-grid,.shop-grid{grid-template-columns:1fr;}
+      .cabin-panel,.member-panel,.holiday-panel,.inspire-panel{margin:0 16px 16px;}
+      .inspire-panel{margin-left:16px;}
+      .dining-text,.pay-text{padding:32px 24px;}
+      .foot-grid{grid-template-columns:1fr;gap:28px;}
+      .foot-bottom{flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== 顶部导航 ==================== -->
+<header class="topnav">
+  <div class="container topnav-inner">
+    <a href="#" class="brand">
+      <img src="Luochang-Metro-Logo.png" alt="洛昌地铁" onerror="this.style.visibility='hidden'">
+    </a>
+
+    <nav class="topmenu">
+      <a href="#">线路</a>
+      <a href="#">车站</a>
+      <a href="#">文创</a>
+      <a href="#">便民</a>
+      <a href="#">洛昌通</a>
+      <a href="#">会员</a>
+    </nav>
+
+    <div class="topnav-right">
+      <span class="hello">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="12" cy="8" r="3.6"/>
+          <path d="M4.5 20c1.2-3.6 4-5.4 7.5-5.4S18.3 16.4 19.5 20"/>
+        </svg>
+        你好，洛昌
+      </span>
+      <a href="#" class="btn-outline">登录</a>
+      <a href="#" class="btn-solid">立即注册</a>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== Hero + 搜索 ==================== -->
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-card">
+      <div class="hero-text">
+        <span class="eyebrow"><i></i>洛昌轨道交通 · 官方门户</span>
+        <h1>畅行洛昌<br><em>地铁伴你每一程</em></h1>
+        <p class="sub">
+          洛昌地铁现已覆盖全市 12 条线路、286 座车站。即日起至 12 月 31 日，
+          使用「洛昌通」乘车码扫码过闸，可享 9 折优惠，新用户首单立减。
+        </p>
+        <div class="hero-actions">
+          <button class="btn-gold">立即乘车</button>
+          <a href="#" class="link-plain">查看路网图 →</a>
+        </div>
+        <p class="hero-note">*优惠细则以洛昌地铁官方公告为准。运营时间 05:30–23:30。</p>
+      </div>
+      <div class="hero-media ph" data-name="hero-metro-riding.png"></div>
+    </div>
+
+    <!-- 搜索面板（车站查询） -->
+    <div class="searchbar">
+      <div class="search-tabs" id="tabs">
+        <button class="active" data-tab="book">查找车站</button>
+        <a class="tab-link" href="checkin.html">失物招领</a>
+        <button data-tab="status">线网状态</button>
+      </div>
+
+      <form class="search-fields" onsubmit="return false;" autocomplete="off">
+
+        <!-- 出发车站：可输入 + 列表匹配 -->
+        <div class="sf combo" data-combo="from">
+          <label for="from">出发车站</label>
+          <input id="from" type="text" autocomplete="off" spellcheck="false"
+                 placeholder="输入车站或线路代码"
+                 aria-autocomplete="list" aria-expanded="false" role="combobox">
+          <div class="combo-list" role="listbox" aria-label="出发车站候选列表"></div>
+          <div class="hint">洛昌东站 · 1/3/7 号线换乘</div>
+        </div>
+
+        <!-- 到达车站：可输入 + 列表匹配 -->
+        <div class="sf combo" data-combo="to" data-fare="true">
+          <label for="to">到达车站</label>
+          <input id="to" type="text" autocomplete="off" spellcheck="false"
+                 placeholder="输入车站或线路代码"
+                 aria-autocomplete="list" aria-expanded="false" role="combobox">
+          <div class="combo-list" role="listbox" aria-label="到达车站候选列表"></div>
+          <div class="hint">输入车站，查看票价（MZB 起）</div>
+        </div>
+
+        <div class="sf">
+          <label for="dep">出发日期</label>
+          <input id="dep" type="date">
+          <div class="hint">请选择出行日期</div>
+        </div>
+
+        <div class="sf" id="returnField">
+          <label for="ret">返回日期</label>
+          <input id="ret" type="date">
+          <div class="hint">请选择返回日期（单程无需）</div>
+        </div>
+
+        <!-- 行程类型：单程 / 往返 / 多程 -->
+        <div class="sf">
+          <label for="tripType">行程类型</label>
+          <select id="tripType">
+            <option value="round">往返</option>
+            <option value="oneway">单程</option>
+            <option value="multi">多程</option>
+          </select>
+          <div class="hint">选择您的行程类型</div>
+        </div>
+
+        <div class="sf-submit">
+          <button class="btn-gold" type="button" id="mainSearchBtn">查询路线</button>
+        </div>
+      </form>
+
+      <div class="search-foot">
+        <span class="dot"></span>
+        <span>票价以 MZB 计价，使用洛昌通乘车码可享折扣，实际以闸机扣费为准。</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 热门线路推荐 ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>热门线路推荐</h2>
+        <p>精选洛昌地铁沿线目的地，单程票价 MZB 起。</p>
+      </div>
+      <a href="#" class="link-more">查看全部线路 →</a>
+    </div>
+
+    <div class="deal-grid">
+
+      <article class="deal-card">
+        <div class="deal-media ph" data-name="line-1.png"></div>
+        <div class="deal-body">
+          <h3>1 号线 · 南北动脉</h3>
+          <span class="cabin-tag">洛昌东站 ↔ 洛昌南站</span>
+          <p class="deal-fare">
+            <span class="cur">MZB</span>
+            <span class="amount">3</span>
+            <span class="from">起</span>
+          </p>
+          <a href="#" class="deal-link">查看时刻表</a>
+        </div>
+      </article>
+
+      <article class="deal-card">
+        <div class="deal-media ph" data-name="line-2.png"></div>
+        <div class="deal-body">
+          <h3>2 号线 · 东西干线</h3>
+          <span class="cabin-tag">西城站 ↔ 东港站</span>
+          <p class="deal-fare">
+            <span class="cur">MZB</span>
+            <span class="amount">4</span>
+            <span class="from">起</span>
+          </p>
+          <a href="#" class="deal-link">查看时刻表</a>
+        </div>
+      </article>
+
+      <article class="deal-card">
+        <div class="deal-media ph" data-name="line-3.png"></div>
+        <div class="deal-body">
+          <h3>3 号线 · 机场快线</h3>
+          <span class="cabin-tag">洛昌东站 ↔ 洛昌机场</span>
+          <p class="deal-fare">
+            <span class="cur">MZB</span>
+            <span class="amount">12</span>
+            <span class="from">起</span>
+          </p>
+          <a href="#" class="deal-link">查看时刻表</a>
+        </div>
+      </article>
+
+      <article class="deal-card">
+        <div class="deal-media ph" data-name="line-4.png"></div>
+        <div class="deal-body">
+          <h3>4 号线 · 环城观光线</h3>
+          <span class="cabin-tag">环城北路 ↔ 环城南路</span>
+          <p class="deal-fare">
+            <span class="cur">MZB</span>
+            <span class="amount">5</span>
+            <span class="from">起</span>
+          </p>
+          <a href="#" class="deal-link">查看时刻表</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 地铁服务 ==================== -->
+<section class="section soft">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>地铁服务</h2>
+        <p>展开一趟舒心之旅——让我们的车站设施及服务，为您缔造便捷的出行体验。</p>
+      </div>
+    </div>
+
+    <div class="cabin-grid">
+
+      <div class="cabin-card">
+        <div class="ph" data-name="service-accessibility.png"></div>
+        <div class="cabin-panel">
+          <h3>无障碍出行服务</h3>
+          <p>全线网车站配备无障碍电梯、盲道及轮椅坡道，部分车站提供预约接送服务。</p>
+          <a href="#" class="link-plain">了解更多 →</a>
+        </div>
+      </div>
+
+      <div class="cabin-card">
+        <div class="ph" data-name="service-student.png"></div>
+        <div class="cabin-panel">
+          <h3>「洛昌学生惠」，伴您求学路</h3>
+          <p>学生专享票价优惠，凭有效学生证可享 5 折乘车，通勤更从容。</p>
+          <a href="#" class="link-plain">立即办理 →</a>
+        </div>
+      </div>
+
+      <div class="cabin-card">
+        <div class="ph" data-name="service-culture.png"></div>
+        <div class="cabin-panel">
+          <h3>洛昌地铁文化节 · 10 月</h3>
+          <p>车站艺术展、地铁文创市集、集章打卡活动，带你发现地铁的多重魅力。</p>
+          <a href="#" class="link-plain">立即探索 →</a>
+        </div>
+      </div>
+
+      <div class="cabin-card">
+        <div class="ph" data-name="service-expansion.png"></div>
+        <div class="cabin-panel">
+          <h3>更多线路，更多新车站</h3>
+          <p>洛昌地铁网络持续拓展，5 号线延长线、8 号线二期正在建设中。</p>
+          <a href="#" class="link-plain">了解详情 →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="center-cta">
+      <a href="#" class="btn-ghost-line">发现更多</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 出行指南 ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>出行指南</h2>
+        <p>规划您的完美出行——线路、换乘、周边景点及便民设施，一站式轻松查询。</p>
+      </div>
+    </div>
+
+    <div class="holiday-card">
+      <div class="ph" data-name="guide-city.png"></div>
+      <div class="holiday-panel">
+        <h3>周末出行优惠</h3>
+        <p>使用洛昌通 App 扫码过闸，周末及法定节假日可享 8 折优惠，畅游洛昌更省心。</p>
+        <a href="#" class="link-plain">查看优惠详情 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 文创 ==================== -->
+<section class="section soft">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>文创</h2>
+        <p>发掘洛昌地铁精选文创系列，从出行装备到居家生活，一应俱全。</p>
+      </div>
+      <a href="#" class="link-more">查看全部商品 →</a>
+    </div>
+
+    <div class="shop-grid">
+
+      <article class="shop-card">
+        <div class="shop-media ph" data-name="shop-train-model.png"></div>
+        <div class="shop-body">
+          <h4>地铁列车模型珍藏版</h4>
+          <p class="price">参考价 <b>MZB 320</b> 起</p>
+        </div>
+      </article>
+
+      <article class="shop-card">
+        <div class="shop-media ph" data-name="shop-cardholder.png"></div>
+        <div class="shop-body">
+          <h4>洛昌通卡套 · 线路系列</h4>
+          <p class="price">参考价 <b>MZB 68</b> 起</p>
+        </div>
+      </article>
+
+      <article class="shop-card">
+        <div class="shop-media ph" data-name="shop-umbrella.png"></div>
+        <div class="shop-body">
+          <h4>地铁主题折叠伞</h4>
+          <p class="price">参考价 <b>MZB 98</b> 起</p>
+        </div>
+      </article>
+
+      <article class="shop-card">
+        <div class="shop-media ph" data-name="shop-tote.png"></div>
+        <div class="shop-body">
+          <h4>线路帆布袋 · 洛昌东站</h4>
+          <p class="price">参考价 <b>MZB 58</b> 起</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="center-cta">
+      <a href="#" class="btn-ghost-line">立即选购 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 便民 ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>便民</h2>
+        <p>车站商业、便民设施及周边服务——让每一次出行更便利。</p>
+      </div>
+    </div>
+
+    <div class="dining-grid">
+      <div class="dining-media ph" data-name="convenience-station.png"></div>
+      <div class="dining-text">
+        <h3>品尝洛昌的烟火气</h3>
+        <p>
+          从洛昌东站到南城站，车站内便利店、咖啡、早餐铺一应俱全。
+          精选本地品牌，让通勤路上也能享受地道风味。
+        </p>
+        <a href="#" class="link-plain">了解更多 →</a>
+      </div>
+    </div>
+
+    <div class="center-cta">
+      <a href="#" class="btn-ghost-line">发掘更多便民服务</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 支付 ==================== -->
+<section class="section soft">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>支付</h2>
+        <p>使用洛昌通乘车码，每次合资格消费可获取丰富奖赏，让日常出行更超值。</p>
+      </div>
+    </div>
+
+    <div class="pay-card">
+      <div class="pay-text">
+        <h3>洛昌地铁联名信用卡</h3>
+        <p>
+          凭卡消费可享乘车折扣、车站贵宾室礼遇及专属优惠。
+          让每一次支付，都离下一段旅程更近一步。
+        </p>
+        <a href="#" class="link-plain">立即申请 →</a>
+      </div>
+      <div class="pay-media ph" data-name="pay-phones.png"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 会员 ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>会员</h2>
+        <p>跃升体验待您享受——注册成为洛昌地铁会员，不论在地面还是车站，都可尊享礼遇及奖赏。</p>
+      </div>
+    </div>
+
+    <div class="member-grid">
+
+      <div class="member-card">
+        <div class="ph" data-name="member-partners.png"></div>
+        <div class="member-panel">
+          <h3>我们的合作伙伴</h3>
+          <p>凭借遍布全城的伙伴网络，让您的积分累积与兑换更加灵活自由。</p>
+          <a href="#" class="link-plain">探索我们的伙伴 →</a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="ph" data-name="member-lounge.png"></div>
+        <div class="member-panel">
+          <h3>会员礼遇</h3>
+          <p>登记成为会员后，即可尊享优先安检、积分加速及生日礼遇。</p>
+          <a href="#" class="link-plain">探索礼遇 →</a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="ph" data-name="member-anywhere.png"></div>
+        <div class="member-panel">
+          <h3>随时随地累积积分</h3>
+          <p>凭乘车、消费与参与活动累积积分，让生活的每一刻都成为旅程的一部分。</p>
+          <a href="#" class="link-plain">了解累积方式 →</a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="ph" data-name="member-rewards.png"></div>
+        <div class="member-panel">
+          <h3>兑换奖励</h3>
+          <p>使用积分兑换免费乘车券、文创商品及合作商家优惠，让出行更超值。</p>
+          <a href="#" class="link-plain">立即兑换 →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="center-cta">
+      <a href="#" class="btn-ghost-line">了解更多关于会员计划</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 探索 ==================== -->
+<section class="section soft">
+  <div class="container">
+    <div class="inspire-card">
+      <div class="ph" data-name="inspire-city.png"></div>
+      <div class="inspire-panel">
+        <h3>探索您的洛昌目的地</h3>
+        <p>透过我们的旅游指南、车站周边攻略与灵感故事，开启您的下一段地铁旅程。</p>
+        <a href="#" class="link-plain">浏览更多 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 页脚 ==================== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+
+      <div>
+        <div class="foot-brand">
+          <img src="Luochang-Metro-Logo.png" alt="洛昌地铁" onerror="this.style.visibility='hidden'">
+          <span class="foot-brand-text">
+            <strong>洛昌地铁</strong>
+            <small>LUOCHANG METRO</small>
+          </span>
+        </div>
+        <p class="address">
+          <strong>总部地址</strong><br>
+          洛昌市中央区地铁大厦<br>
+          轨道大道 88 号
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="微信">
+            <svg viewBox="0 0 24 24"><path d="M8.7 3C4.9 3 1.8 5.6 1.8 8.8c0 1.8 1 3.4 2.6 4.5l-.7 2.1 2.4-1.2c.8.2 1.6.3 2.5.3h.6c-.1-.4-.2-.9-.2-1.3 0-3.2 3.1-5.8 6.9-5.8h.6C15.9 4.8 12.6 3 8.7 3Zm-2.4 4.4c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9Zm4.8 0c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9Z"/><path d="M22.2 13.2c0-2.7-2.6-4.9-5.8-4.9s-5.8 2.2-5.8 4.9 2.6 4.9 5.8 4.9c.7 0 1.4-.1 2-.3l1.9 1-.5-1.7c1.5-.9 2.4-2.3 2.4-3.9Zm-7.7-1.4c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7Zm3.8 0c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7Z"/></svg>
+          </a>
+          <a href="#" aria-label="微博">
+            <svg viewBox="0 0 24 24"><path d="M10 20.3c-3.6.4-6.7-1.3-6.9-3.8-.2-2.5 2.5-4.8 6.1-5.2 3.6-.4 6.7 1.3 6.9 3.8.2 2.5-2.5 4.8-6.1 5.2Zm-.4-7c-2.9.3-5 2-4.8 3.8.2 1.8 2.7 3 5.6 2.7 2.9-.3 5-2 4.8-3.8-.2-1.8-2.7-3-5.6-2.7Zm.6 1.7c-1.1.3-1.8 1.1-1.5 1.8.3.7 1.4 1 2.5.7 1.1-.3 1.8-1.1 1.5-1.8-.3-.7-1.4-1-2.5-.7Z"/><path d="M18.2 10.3c-.4-.1-.7-.5-.6-.9.3-1.3-.4-2.7-1.7-3.3-.4-.2-.6-.7-.4-1.1.2-.4.7-.6 1.1-.4 2 .9 3 2.9 2.5 5-.1.4-.5.7-.9.7Zm2.5-4.6c-.4-.2-.6-.6-.4-1 1.1-2.2.3-4.9-1.8-6.2-.4-.2-.5-.7-.3-1.1.2-.4.7-.5 1.1-.3 2.9 1.7 4 5.3 2.5 8.2-.2.4-.7.6-1.1.4Z"/></svg>
+          </a>
+          <a href="#" aria-label="小红书">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2Zm-1.6 4.4h3.2c.4 0 .7.3.7.7s-.3.7-.7.7h-3.2c-.4 0-.7-.3-.7-.7s.3-.7.7-.7Zm5.9 11.2H7.7c-.4 0-.7-.3-.7-.7s.3-.7.7-.7h8.6c.4 0 .7.3.7.7s-.3.7-.7.7Zm0-3.3H7.7c-.4 0-.7-.3-.7-.7s.3-.7.7-.7h8.6c.4 0 .7.3.7.7s-.3.7-.7.7Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>关于我们</h4>
+        <a href="#">公司简介</a>
+        <a href="#">新闻中心</a>
+        <a href="#">人才招聘</a>
+        <a href="#">可持续发展</a>
+        <a href="#">投资者关系</a>
+        <a href="#">我们的承诺</a>
+      </div>
+
+      <div>
+        <h4>法律及隐私声明</h4>
+        <a href="#">条款及细则</a>
+        <a href="#">隐私政策</a>
+        <a href="#">Cookie 设置</a>
+        <a href="#">无障碍声明</a>
+        <a href="#">安全须知</a>
+      </div>
+
+      <div>
+        <h4>协助及支持</h4>
+        <a href="#">联系我们</a>
+        <a href="#">常见问题</a>
+        <a href="#">特殊协助服务</a>
+        <a href="#">行李须知</a>
+        <a href="#">退款与改签</a>
+      </div>
+
+    </div>
+
+    <div class="foot-bottom">
+      <div class="legal">
+        <span>© 2025 洛昌地铁 Luochang Metro 版权所有</span>
+        <a href="#">隐私政策</a>
+        <a href="#">使用条款</a>
+        <a href="#">Cookie 设置</a>
+      </div>
+      <div class="star-mark">
+        <span>洛昌轨道交通运营主体</span>
+        <img src="SAL.png" alt="洛昌地铁" onerror="this.style.visibility='hidden'">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ============================================================
+     统一车站信息库
+     ============================================================ */
+  var PLACES = [
+    /* ── 洛昌地铁 1-4 号线核心车站 ── */
+    { city:'洛昌东站',     en:'Luochang East',   code:'LCE', note:'1/3/7 号线换乘' },
+    { city:'洛昌南站',     en:'Luochang South',  code:'LCS', note:'1/2 号线换乘' },
+    { city:'洛昌西站',     en:'Luochang West',   code:'LCW', note:'2/4 号线换乘' },
+    { city:'洛昌北站',     en:'Luochang North',  code:'LCN', note:'1/4 号线换乘' },
+    { city:'中央公园站',   en:'Central Park',    code:'CPK', note:'3 号线' },
+    { city:'市博物馆站',   en:'City Museum',     code:'CMS', note:'1 号线' },
+    { city:'大学城站',     en:'University Town', code:'UTN', note:'2 号线' },
+    { city:'洛昌机场站',   en:'Luochang Airport',code:'LAP', note:'3 号线 · 机场快线' },
+    { city:'国际会展中心站', en:'Convention Center', code:'ICC', note:'3/7 号线换乘' },
+    { city:'滨江道站',     en:'Binjiang Road',   code:'BJR', note:'4 号线' },
+    { city:'老城厢站',     en:'Old Town',        code:'OTN', note:'1 号线' },
+    { city:'高新园站',     en:'Hi-Tech Park',    code:'HTP', note:'2 号线' },
+    { city:'奥体中心站',   en:'Olympic Center',  code:'OLC', note:'4 号线' },
+    { city:'洛昌火车站',   en:'Luochang Railway',code:'LCR', note:'1/2 号线换乘' },
+    { city:'南城站',       en:'Nancheng',        code:'NCH', note:'1 号线' },
+    { city:'东港站',       en:'Donggang',        code:'DGG', note:'2 号线' },
+    { city:'西城站',       en:'Xicheng',         code:'XCH', note:'2 号线' },
+    { city:'环城北路站',   en:'North Ring',      code:'NRG', note:'4 号线' },
+    { city:'环城南路站',   en:'South Ring',      code:'SRG', note:'4 号线' },
+    { city:'洛昌新区站',   en:'New District',    code:'NWD', note:'7 号线' },
+
+    /* ── 其他规划/建设线路 ── */
+    { city:'洛昌科技园站', en:'Tech Park',       code:'TPK', note:'5 号线（规划）' },
+    { city:'洛昌生态园站', en:'Eco Park',        code:'EPK', note:'8 号线（建设中）' }
+  ];
+
+  /* ---------- 工具函数 ---------- */
+  function escHtml(s){
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
+  function fmtNum(n){
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function hl(text, q){
+    var t = String(text);
+    if (!q) return escHtml(t);
+    var i = t.toLowerCase().indexOf(q.toLowerCase());
+    if (i < 0) return escHtml(t);
+    return escHtml(t.slice(0, i)) +
+           '<mark>' + escHtml(t.slice(i, i + q.length)) + '</mark>' +
+           escHtml(t.slice(i + q.length));
+  }
+
+  function isMatch(it, q){
+    var ql = String(q || '').trim().toLowerCase();
+    if (!ql) return true;
+    return [it.city, it.en, it.code, it.note || ''].some(function (f) {
+      return String(f).toLowerCase().indexOf(ql) > -1;
+    });
+  }
+
+  function subText(it, showFare){
+    var parts = [];
+    if (it.note) parts.push(escHtml(it.note));
+    if (showFare && it.fare) {
+      parts.push('单程 <b>MZB ' + fmtNum(it.fare) + '</b> 起');
+    }
+    return parts.join(' · ');
+  }
+
+  function hintText(it, showFare){
+    var parts = [];
+    if (it.note) parts.push(it.note);
+    if (showFare && it.fare) parts.push('单程 MZB ' + fmtNum(it.fare) + ' 起');
+    return parts.length ? parts.join(' · ') : (it.city + ' · ' + it.en);
+  }
+
+  /* ---------- 初始化组合框 ---------- */
+  function initCombo(root){
+    var key      = root.getAttribute('data-combo');
+    var showFare = root.getAttribute('data-fare') === 'true';
+    var isOrigin = key === 'from';
+
+    var input    = root.querySelector('input');
+    var list     = root.querySelector('.combo-list');
+    var hintEl   = root.querySelector('.hint');
+
+    var selected    = null;
+    var filtered    = [];
+    var activeIndex = -1;
+    var isOpen      = false;
+
+    function label(it){ return it.city + ' (' + it.code + ')'; }
+
+    function openList(){
+      if (isOpen) return;
+      isOpen = true;
+      root.classList.add('is-open');
+      input.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeList(){
+      if (!isOpen) return;
+      isOpen = false;
+      root.classList.remove('is-open');
+      input.setAttribute('aria-expanded', 'false');
+      activeIndex = -1;
+
+      var v = input.value.trim();
+      var found = null;
+      for (var i = 0; i < PLACES.length; i++) {
+        var it = PLACES[i];
+        if (label(it) === v ||
+            it.city === v ||
+            it.en.toLowerCase() === v.toLowerCase() ||
+            it.code.toLowerCase() === v.toLowerCase() ||
+            (it.note && it.note === v)) {
+          found = it;
+          break;
+        }
+      }
+      if (found) {
+        setSelected(found);
+      } else if (selected) {
+        input.value = label(selected);
+      } else {
+        input.value = '';
+      }
+    }
+
+    function setSelected(it){
+      selected = it;
+      input.value = label(it);
+      if (hintEl) hintEl.textContent = hintText(it, showFare);
+
+      if (key === 'from') window.__selectedFrom = it;
+      else if (key === 'to') window.__selectedTo = it;
+    }
+
+    function render(q){
+      filtered = PLACES.filter(function (it) { return isMatch(it, q); });
+
+      if (!filtered.length) {
+        list.innerHTML = '<div class="combo-empty">未找到匹配的车站或线路代码</div>';
+        activeIndex = -1;
+        return;
+      }
+      if (activeIndex < 0 || activeIndex >= filtered.length) activeIndex = 0;
+
+      var html = '';
+      for (var i = 0; i < filtered.length; i++) {
+        var it = filtered[i];
+        var sub = subText(it, showFare);
+        html += '<div class="combo-item' + (i === activeIndex ? ' active' : '') + '"'
+              +      ' role="option" data-index="' + i + '">'
+              +   '<span class="ci-code">' + hl(it.code, q) + '</span>'
+              +   '<span class="ci-body">'
+              +     '<span class="ci-name">' + hl(it.city, q) + ' <em>' + hl(it.en, q) + '</em></span>'
+              +     (sub ? '<span class="ci-note">' + sub + '</span>' : '')
+              +   '</span>'
+              + '</div>';
+      }
+      list.innerHTML = html;
+    }
+
+    function updateActive(){
+      var nodes = list.querySelectorAll('.combo-item');
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].classList.toggle('active', i === activeIndex);
+      }
+      var act = list.querySelector('.combo-item.active');
+      if (act && act.scrollIntoView) act.scrollIntoView({ block: 'nearest' });
+    }
+
+    function move(dir){
+      if (!filtered.length) return;
+      activeIndex = (activeIndex + dir + filtered.length) % filtered.length;
+      updateActive();
+    }
+
+    input.addEventListener('focus', function () {
+      var cur = input.value.trim();
+      var q = (selected && cur === label(selected)) ? '' : cur;
+      render(q);
+      openList();
+      input.select();
+    });
+
+    input.addEventListener('input', function () {
+      render(input.value.trim());
+      openList();
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (!isOpen) { render(input.value.trim()); openList(); }
+        else { move(1); }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        move(-1);
+      } else if (e.key === 'Enter') {
+        if (isOpen && filtered[activeIndex]) {
+          e.preventDefault();
+          setSelected(filtered[activeIndex]);
+          closeList();
+          input.blur();
+        }
+      } else if (e.key === 'Escape') {
+        closeList();
+      }
+    });
+
+    list.addEventListener('mousedown', function (e) { e.preventDefault(); });
+
+    list.addEventListener('mouseover', function (e) {
+      var item = e.target.closest ? e.target.closest('.combo-item') : null;
+      if (!item) return;
+      activeIndex = parseInt(item.getAttribute('data-index'), 10);
+      updateActive();
+    });
+
+    list.addEventListener('click', function (e) {
+      var item = e.target.closest ? e.target.closest('.combo-item') : null;
+      if (!item) return;
+      var idx = parseInt(item.getAttribute('data-index'), 10);
+      if (filtered[idx]) {
+        setSelected(filtered[idx]);
+        closeList();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!root.contains(e.target)) closeList();
+    });
+
+    if (isOrigin) {
+      var defaultFrom = null;
+      for (var i = 0; i < PLACES.length; i++) {
+        if (PLACES[i].code === 'LCE') { defaultFrom = PLACES[i]; break; }
+      }
+      if (defaultFrom) setSelected(defaultFrom);
+    } else {
+      var defaultTo = null;
+      for (var j = 0; j < PLACES.length; j++) {
+        if (PLACES[j].code === 'LAP') { defaultTo = PLACES[j]; break; }
+      }
+      if (defaultTo) setSelected(defaultTo);
+    }
+  }
+
+  document.querySelectorAll('.sf.combo').forEach(initCombo);
+
+  /* ==================== 行程类型切换 ==================== */
+  var tripType    = document.getElementById('tripType');
+  var returnField = document.getElementById('returnField');
+  var retInput    = returnField.querySelector('input');
+  var retHint     = returnField.querySelector('.hint');
+
+  function applyTripType(){
+    var type = tripType.value;
+    if (type === 'oneway') {
+      returnField.style.opacity = '0.45';
+      retInput.disabled = true;
+      retHint.textContent = '单程行程无需返回日期';
+    } else if (type === 'multi') {
+      returnField.style.opacity = '1';
+      retInput.disabled = false;
+      retHint.textContent = '多程请按区间分别选择日期';
+    } else {
+      returnField.style.opacity = '1';
+      retInput.disabled = false;
+      retHint.textContent = '请选择返回日期';
+    }
+  }
+
+  tripType.addEventListener('change', applyTripType);
+  applyTripType();
+
+  /* ==================== 搜索标签激活状态 ==================== */
+  document.querySelectorAll('#tabs button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('#tabs button').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+    });
+  });
+
+  /* ==================== 日期最小值限制 ==================== */
+  var today = new Date().toISOString().split('T')[0];
+  var dep = document.getElementById('dep');
+  var ret = document.getElementById('ret');
+  dep.min = today;
+  ret.min = today;
+  dep.addEventListener('change', function () {
+    ret.min = dep.value || today;
+  });
+
+  /* ==================== 查询路线：跳转 ticket.html 并携带参数 ==================== */
+  document.getElementById('mainSearchBtn').addEventListener('click', function () {
+    var fromCode = window.__selectedFrom ? window.__selectedFrom.code : 'LCE';
+    var toCode   = window.__selectedTo   ? window.__selectedTo.code   : 'LAP';
+
+    var depVal = document.getElementById('dep').value;
+    var retVal = document.getElementById('ret').value;
+    var tripTypeVal = document.getElementById('tripType').value;
+
+    var url = 'ticket.html'
+      + '?from=' + encodeURIComponent(fromCode)
+      + '&to='   + encodeURIComponent(toCode)
+      + '&dep='  + encodeURIComponent(depVal)
+      + '&ret='  + encodeURIComponent(retVal)
+      + '&type=' + encodeURIComponent(tripTypeVal);
+
+    location.href = url;
+  });
+
+})();
+</script>
+
+</body>
+</html>
